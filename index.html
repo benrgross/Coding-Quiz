@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coding-Quiz</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Take Quiz opening form  -->
+    <div class="card">
+      <h1>Would you like to start the quiz?</h1>
+      <button>Start!</button>
+    </div>
+
+    <div id="timer">
+      <h3></h3>
+    </div>
+
+    <!-- link to score card  -->
+    <div id="scorecard-link">
+      <a href="link to highscore page ">view high scores</a>
+    </div>
+
+    <!-- Question card or box  -->
+    <div class="card">
+      <h1>Question</h1>
+      <div class="quiz-buttons">
+        <button id="1">Question 1</button>
+        <button id="2">Question 2</button>
+        <button id="3">Question 3</button>
+        <button id="4">Question 4</button>
+      </div>
+      <footer id="CorrectIncorrect"></footer>
+    </div>
+
+    <!-- Score card  -->
+    <div class="score-card">
+      <h1>All Done!</h1>
+      <h2 id="your-score"></h2>
+      <form action="fname">Enter Initials:</form>
+      <button id="submit-score">Sumbit</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
