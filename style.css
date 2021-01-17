@@ -1,3 +1,10 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
 body {
   box-sizing: border-box;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -13,6 +20,7 @@ body {
   width: 10%;
   float: right;
   padding: 0px;
+  top: 10px;
   left: 90%;
 }
 
@@ -22,6 +30,7 @@ body {
   float: left;
   padding: 2px;
   position: fixed;
+  top: 10px;
   left: 20px;
 }
 
@@ -39,15 +48,17 @@ h1 {
 
 .card {
   clear: both;
+  display: auto;
   border: 2px solid rgb(152, 187, 231);
   box-shadow: 0px 0px 2px 4px rgba(156, 194, 245, 0.986);
-  width: 50%;
+  width: 650px;
+  max-width: 80%;
   height: 275px;
-  float: left;
-  position: fixed;
+  position: relative;
   top: 100px;
-  left: 20%;
+  left: 100px;
   border-radius: 5px;
+  margin: none;
 }
 
 .score-card {
@@ -56,26 +67,32 @@ h1 {
 #start-box {
 }
 
+.btn-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+}
+
 .btn {
-  width: 25%;
-  float: left;
+  width: 200px;
+  max-width: 60%;
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  justify-content: center;
+  gap: 0px;
   background-color: rgb(200, 219, 248);
   border: 2px solid rgb(103, 103, 221);
-  padding: 15px;
-  position: relative;
-  left: 75px;
+  padding: 20px;
   text-align: center;
-  margin-right: 20px;
+  margin-top: 20px;
   text-decoration: none;
   border-radius: 20px 20px;
+  margin-left: 40px;
+  font-size: 16px;
 }
 
 .btn:hover {
-  background-color: rgb(183, 209, 149);
-}
-
-#scoreBtn {
-  margin-left: 1rem;
+  background-color: rgb(243, 214, 160);
 }
 
 p {

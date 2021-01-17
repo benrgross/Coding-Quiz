@@ -1,5 +1,3 @@
-
-
 var questions = [
   {
     question: "what is 1  + 2?",
@@ -32,7 +30,7 @@ var questionPool = [];
 var i = 0;
 
 // start quiz function when start button clicked
-var statBtn = document.getElementById("start");
+var startBtn = document.getElementById("start");
 startBtn.addEventListener("click", startGame);
 
 /// get elements by id
@@ -41,25 +39,5 @@ startBtn.addEventListener("click", startGame);
 
 // Start game function
 function startGame() {
- console.log("started");
-  getQuestion();
+  console.log("started");
 }
-
-//function to pull question out of array and put it into question box
-function getQuestion() {
-  // make condition - if questions answered is if ()
-
-  }
-}
-
-function validateQuestion()
-
-
-// the function
-// 1 pull question out of array
-// // add question to header
-// add a --> button a
-// add b --> button b
-// add c --> button c
-
-//questions do i create the buttons on the html page or do i create the buttons with javascript?
