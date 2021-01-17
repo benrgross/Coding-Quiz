@@ -1,13 +1,13 @@
 var questions = [
   {
-    question: "What am i doing? ",
-    answers: ["A: I love it", "B: I dont love it ", "C: Eat shit"],
-    correct: "C",
+    question: "What is 2 + 2 ",
+    answers: ["A: 44", "B: 4 ", "C: 22"],
+    correct: "B: 4",
   },
   {
-    question: "I really am not sure?",
-    answers: ["A: I love it", "B: I dont love it ", "C: Eat shit"],
-    correct: "C",
+    question: "what is a butfor",
+    answers: ["A: a tool", "B: a pickle", "C: pooping silly"],
+    correct: "C: pooping silly",
   },
 ];
 
@@ -24,6 +24,7 @@ var startContainer = document.getElementById("start-container");
 var showQuestions = document.getElementById("quiz-box");
 var questionEl = document.getElementById("question");
 var answerElement = document.getElementById("answers");
+var timerEl = document.getElementById("display-time");
 
 /// get elements by id
 
@@ -34,6 +35,7 @@ function startGame() {
   //hide start container
   pickQuestion = questions;
   questionIndex = 0;
+  timer();
   startContainer.classList.add("hide");
   //show question container
   showQuestions.classList.remove("hide");
@@ -56,13 +58,19 @@ function displayQuestions(questions) {
     btn.classList.add("qBtn");
     answerElement.appendChild(btn);
   }
+  //add event listenter that stores answer
+  //need if statement that validates andswer and moves on to the next
+  //store score somewhere
 }
-
-console.log(answerElement);
-
-console.log(questionEl);
-
-console.log(answers);
+//set timer function
+function timer() {
+  var timeLeft = 90;
+  var timeInterval = setInterval(function () {
+    timerEl.textContent = timeLeft;
+    timeLeft--;
+    if (time === 0) clearInterval(timeInterval);
+  }, 1000);
+}
 
 // answerButton = questions.answers;
 // for (i = 0; i < questions.answers.length; i++)
