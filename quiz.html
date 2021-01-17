@@ -8,34 +8,51 @@
   </head>
   <body>
     <div class="container">
-      <div id="timer">
-      <p id="display-time">Timer</p>
+
+        <!-- //start button  -->
+        <div id="start-container">
+            <div id="start-box" class="card">
+              <h1>Would you like to start the quiz?</h1>
+              <a href="quiz.html" class="btn">Start Quiz!</a>
+              <a href="scores.html" class="btn" id="scoreBtn">High Scores</a>
+            </div>
+        </div>
+    
+        <!-- timer element  -->
+        <div class="timer-container">
+          <div id="timer">
+          <p id="display-time">Timer</p>
+        </div>
+    
+        <!-- link to score card  -->
+        <div id="scorecard-link">
+          <p>link to score card</p>
+        </div>
+    
+        <!-- Question card or box  -->
+        <div id="quiz-box" class="card hide">
+          <h1 id="question">Here Goes the Question ?</h1>
+          <div class="choice-container">
+              <button class="qBtn" id="one">A: Question</button>
+          </div>
+          <div class="choice-container">
+              <button class="qBtn" id="two">B: Button</button>
+          </div>
+          <div class="choice-container">
+            <button class="qBtn" id="three">C: Button</button>
+          </div>
+          <div class="choice-container">
+            <button class="qBtn" id="four">D: Button</button>
+          </div>
+          <footer>
+            <p id="CorrectIncorrect"></p>
+          </footer>
+        </div>
+
+        
     </div>
 
-    <!-- link to score card  -->
-    <div id="scorecard-link">
-      <p>link to score card</p>
-    </div>
-
-    <!-- Question card or box  -->
-    <div id="quiz-box" class="card">
-      <h1 id="question">Here Goes the Question ?</h1>
-      <div class="choice-container">
-          <button class="qBtn" id="one">A: Question</button>
-      </div>
-      <div class="choice-container">
-          <button class="qBtn" id="two">B: Button</button>
-      </div>
-      <div class="choice-container">
-        <button class="qBtn" id="three">C: Button</button>
-      </div>
-      <div class="choice-container">
-        <button class="qBtn" id="four">D: Button</button>
-      </div>
-      <footer>
-        <p id="CorrectIncorrect"></p>
-      </footer>
-    </div>
+    
 
     <script src="script.js"></script>
   </body>

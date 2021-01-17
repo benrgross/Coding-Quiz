@@ -1,5 +1,9 @@
 body {
   box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  justify-content: center;
+  display: flex;
+  align-items: center;
 }
 .container {
 }
@@ -97,4 +101,8 @@ p {
 .choice-letter {
   margin-right: 15px;
   margin-left: 5px;
+}
+
+.hide {
+  display: none;
 }
