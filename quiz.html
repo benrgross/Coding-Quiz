@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="timer">
+    <div class="container">
+      <div id="timer">
       <p id="display-time">Timer</p>
     </div>
 
@@ -18,9 +19,21 @@
 
     <!-- Question card or box  -->
     <div id="quiz-box" class="card">
-      <p id="quiz-content"></p>
+      <h1 id="question">Here Goes the Question ?</h1>
+      <div class="choice-container">
+          <button class="qBtn" id="one">A: Question</button>
+      </div>
+      <div class="choice-container">
+          <button class="qBtn" id="two">B: Button</button>
+      </div>
+      <div class="choice-container">
+        <button class="qBtn" id="three">C: Button</button>
+      </div>
+      <div class="choice-container">
+        <button class="qBtn" id="four">D: Button</button>
+      </div>
       <footer>
-        <p id="correct-incorrect"></p>
+        <p id="CorrectIncorrect"></p>
       </footer>
     </div>
 
