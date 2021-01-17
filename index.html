@@ -7,34 +7,28 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <!-- Take Quiz opening form  -->
-    <div class="card">
+    Take Quiz opening form
+    <div id="start-box" class="card">
       <h1>Would you like to start the quiz?</h1>
-      <button>Start!</button>
+      <button id="start-button">Start!</button>
     </div>
 
     <div id="timer">
-      <h3></h3>
+      <p id="display-time">Timer</p>
     </div>
 
     <!-- link to score card  -->
     <div id="scorecard-link">
-      <a href="link to highscore page ">view high scores</a>
+      <p>link to score card</p>
     </div>
 
     <!-- Question card or box  -->
-    <div class="card">
-      <h1>Question</h1>
-      <div class="quiz-buttons">
-        <button id="1">Question 1</button>
-        <button id="2">Question 2</button>
-        <button id="3">Question 3</button>
-        <button id="4">Question 4</button>
-      </div>
+    <div id="quiz-box" class="card">
+      <p id="quiz-content"></p>
       <footer id="CorrectIncorrect"></footer>
     </div>
 
-    <!-- Score card  -->
+    <!-- Score card -->
     <div class="score-card">
       <h1>All Done!</h1>
       <h2 id="your-score"></h2>
