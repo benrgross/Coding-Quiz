@@ -1,29 +1,14 @@
-var questions = [
-  {
-    question: "what is 1  + 2?",
-    a: "22",
-    b: "31",
-    c: "2",
-    d: "3",
-    answer: "d",
-  },
-  {
-    question: "what is my age",
-    a: "28",
-    b: "30",
-    c: "23",
-    d: "31",
-    answer: "b",
-  },
-  {
-    question: "what is a pickle",
-    a: "dog",
-    b: "button",
-    c: "cucumber",
-    d: "alien poop",
-    answer: "c",
-  },
-];
+var questions = [ {
+    question: "What is  5 + 5 ?" ,
+        answers: [
+            {text: "4", correct: true},
+            {text: "95", correct: false}
+            {text: "30", correct: false},
+            {text: "45", correct:false}
+        ]
+}
+]
+
 
 var questionPool = [];
 
@@ -32,6 +17,8 @@ var i = 0;
 // start quiz function when start button clicked
 var startBtn = document.getElementById("start");
 startBtn.addEventListener("click", startGame);
+var startContainer = document.getElementById("start-container");
+var showQuestions = document.getElementById("quiz-box");
 
 /// get elements by id
 
@@ -39,5 +26,11 @@ startBtn.addEventListener("click", startGame);
 
 // Start game function
 function startGame() {
-  console.log("started");
+  //hide start container
+  startContainer.classList.add("hide");
+  //show question container
+  showQuestions.classList.remove("hide");
+  selectQuestion ()
 }
+
+function selectQuestion()
