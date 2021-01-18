@@ -5,17 +5,17 @@ var questions = [
     correct: "B: 4",
   },
   {
-    question: "what is a butfor",
+    question: "what is a buttfor",
     answers: ["A: a tool", "B: a pickle", "C: pooping silly"],
     correct: "C: pooping silly",
   },
 ];
 
-var questionPool = [];
-
 var pickQuestion;
 
 var questionIndex = 0;
+
+var score = 0;
 
 // start quiz function when start button clicked
 var startBtn = document.getElementById("start");
@@ -25,6 +25,7 @@ var showQuestions = document.getElementById("quiz-box");
 var questionEl = document.getElementById("question");
 var answerElement = document.getElementById("answers");
 var timerEl = document.getElementById("display-time");
+var validateAnswer = document.getElementById("CorrectIncorrect");
 
 /// get elements by id
 
@@ -58,18 +59,23 @@ function displayQuestions(questions) {
     btn.classList.add("qBtn");
     answerElement.appendChild(btn);
   }
-  //add event listenter that stores answer
-  //need if statement that validates andswer and moves on to the next
-  //store score somewhere
 }
+
+//add event listenter that stores answer
+//resets state adds question index ++ and goes to next question
+//need if statement that validates answer and moves on to the next
+//store score somewhere
 //set timer function
 function timer() {
   var timeLeft = 90;
   var timeInterval = setInterval(function () {
     timerEl.textContent = timeLeft;
     timeLeft--;
-    if (time === 0) clearInterval(timeInterval);
-  }, 1000);
+    //need if statement if(answer false time - 10)
+    if (timeLeft === 0) {
+      clearInterval(timeInterval);
+    }
+  }, 500);
 }
 
 // answerButton = questions.answers;

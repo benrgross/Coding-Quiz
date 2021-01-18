@@ -41,7 +41,7 @@ h1 {
   font-weight: 500;
   color: rgb(105, 105, 233);
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   text-align: center;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
 }
@@ -53,7 +53,7 @@ h1 {
   box-shadow: 0px 0px 2px 4px rgba(156, 194, 245, 0.986);
   width: 650px;
   max-width: 80%;
-  height: 275px;
+  height: 325px;
   position: relative;
   top: 100px;
   left: 100px;
@@ -104,11 +104,14 @@ p {
 .qBtn {
   background-color: rgb(200, 219, 248);
   display: flex;
+  color: rgb(7, 63, 112);
   border: 1px solid rgb(103, 103, 221);
   border-radius: 5px 5px;
   margin-bottom: 10px;
-  font-size: 16px;
-  margin-left: 15px;
+  font-size: 20px;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 10px 10px;
 }
 
 .qBtn:hover {

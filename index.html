@@ -3,17 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coding-Quiz</title>
+    <title>Quiz Fun</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="container">
-      <div id="start-box" class="card">
-        <h1>Would you like to start the quiz?</h1>
-        <a href="quiz.html" class="btn">Start Quiz!</a>
-        <a href="scores.html" class="btn" id="scoreBtn">High Scores</a>
-      </div>
+
+        <!-- //start button  -->
+        <div id="start-container" class="card">
+            <h1>Would you like to start the quiz?</h1>
+            <div id="start-box" class="btn-grid">
+                <button id="start" class="btn">Start!</button>
+                <button class="btn" id="scoreBtn">High Scores</button>
+            </div>
+        </div>
+    
+         <!-- Question card or box  -->
+         <div id="quiz-box" class="card hide">
+            <h1 id="question"></h1>
+            <div class="choice-container" id="answers">
+              
+            </div>
+            <footer>
+              <p id="CorrectIncorrect"></p>
+            </footer>
+          </div>
+
+        <!-- timer element  -->
+        <div class="timer-container">
+          <div id="timer">
+          <p id="display-time"></p>
+        </div>
+    
+        <!-- link to score card  -->
+        <div id="scorecard-link">
+          <p>link to score card</p>
+        </div>
+    
+
+        
     </div>
+
+    
 
     <script src="script.js"></script>
   </body>
