@@ -5,17 +5,20 @@ var questions = [
     correct: "B: 4",
   },
   {
-    question: "what is a buttfor",
+    question: "what is a buttfor?",
     answers: ["A: a tool", "B: a pickle", "C: pooping silly"],
     correct: "C: pooping silly",
   },
 ];
 
+console.log(questions[0].correct);
 var pickQuestion;
 
-var questionIndex = 0;
+var questionIndex = 1;
 
 var score = 0;
+
+correct = questions[questionIndex].correct;
 
 // start quiz function when start button clicked
 var startBtn = document.getElementById("start");
@@ -34,7 +37,6 @@ var validateAnswer = document.getElementById("CorrectIncorrect");
 // Start game function
 function startGame() {
   //hide start container
-  pickQuestion = questions;
   questionIndex = 0;
   timer();
   startContainer.classList.add("hide");
@@ -45,7 +47,9 @@ function startGame() {
 
 //function to select question from the array
 function selectQuestion() {
-  displayQuestions(pickQuestion[questionIndex]);
+  resetState();
+  displayQuestions(questions[questionIndex]);
+  questionIndex++;
   // make loop for selecting questions from array ?
   displayQuestions();
 }
@@ -54,10 +58,37 @@ function selectQuestion() {
 function displayQuestions(questions) {
   questionEl.innerText = questions.question;
   for (i = 0; i < questions.answers.length; i++) {
-    var btn = document.createElement("BUTTON");
-    btn.textContent = questions.answers[i];
-    btn.classList.add("qBtn");
-    answerElement.appendChild(btn);
+    var qBtn = document.createElement("button");
+    qBtn.textContent = questions.answers[i];
+    qBtn.classList.add("qBtn");
+    answerElement.appendChild(qBtn);
+    qBtn.addEventListener("click", buttonClick);
+  }
+}
+
+function buttonClick(e) {
+  console.log(e.target);
+  var answer = e.target.innerText;
+  console.log(answer);
+  Validate(answer, correct);
+  if (questionIndex < questions.length) {
+    selectQuestion();
+  }
+}
+
+function resetState() {
+  while (answerElement.firstChild) {
+    answerElement.removeChild(answerElement.firstChild);
+  }
+}
+
+function Validate(answer, correct) {
+  correct = "";
+  correct = questions.correct;
+  console.log(correct);
+  if (answer == correct) {
+    score++;
+    console.log(score);
   }
 }
 
@@ -78,10 +109,14 @@ function timer() {
   }, 500);
 }
 
-// answerButton = questions.answers;
-// for (i = 0; i < questions.answers.length; i++)
-//   var btn = document.createElement("BUTTON");
-// btn.textContent = questions.answers[i];
-// btn.classList.add("qBtn");
-// answerElement.appendChild(btn);
-// answerButton[i];
+// qBtn.addEventListener("click", function (answer, correct) {
+//   qBtn.innerText = answer;
+//   questions.correct.innerText = correct;
+//   if (answer === correct) {
+//     validateAnswer.textContent = "Correct!";
+//     score++;
+//     nextQuestion();
+//   } else {
+//     validateAnswer.textContent = "Incorrect!";
+//     timeLeft = timeLeft - 10;
+//     nextQuestion()\
