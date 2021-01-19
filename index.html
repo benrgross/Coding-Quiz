@@ -23,7 +23,7 @@
             <h1 id="question"></h1>
             <div class="choice-container" id="answers">
               
-            </div>
+         </div>
             <footer>
               <p id="CorrectIncorrect"></p>
             </footer>
@@ -31,21 +31,43 @@
 
         <!-- timer element  -->
         <div class="timer-container">
-          <div id="timer">
+            <div id="timer">
           <p id="display-time"></p>
         </div>
     
         <!-- link to score card  -->
         <div id="scorecard-link">
-          <p>link to score card</p>
+          <a href="score.html">Check High Scores</a>
         </div>
+
+        <!-- Score card -->
+      <div id="score-card" class="card hide">
+        <h1>All Done! Input your name to check high scores</h1>
+        <h2 id="your-score"></h2>
+        <form id="score-form">
+          <label for="fname">Initials:</label>
+          <input type="text" id="initials" />
+          <input type="submit" id="submitBtn" value="submit"/>
+        </form>
+      </div>
+
+      <div id="highscore" class="card hide">
+           <h1>High Scores</h1>
+           <ul id="score-list" class="listgroup">
+           </ul>
+           <button id="play-again"class="qBtn">Play Again!</button>
+      </div> 
     
+
+
 
         
     </div>
 
-    
 
     <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
   </body>
 </html>
