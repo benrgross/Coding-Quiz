@@ -184,6 +184,16 @@ function showScore() {
   scoreSubmit.classList.add("hide");
   showQuestions.classList.add("hide");
   clearInterval(timeInterval);
+  li = document.createElement("li");
+  li.className = "score-item";
+  console.log(li);
+  li.appendChild(
+    document.createTextNode(
+      localStorage.getItem("initials") +
+        " - score: " +
+        localStorage.getItem("score")
+    )
+  );
 }
 
 // qBtn.addEventListener("click", function (answer, correct) {
