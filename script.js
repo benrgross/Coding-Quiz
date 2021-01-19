@@ -39,6 +39,7 @@ var questions = [
   },
 ];
 
+var scoreStore = [];
 console.log(questions[0].correct);
 var pickQuestion;
 
@@ -51,6 +52,10 @@ var timeLeft = 90;
 var timeInterval = setInterval(timer, 500);
 
 correct = questions[questionIndex].correct;
+
+var correct = "Correct!";
+
+var incorrect = "Incorrect!";
 
 // get elements
 var startBtn = document.getElementById("start");
@@ -69,7 +74,7 @@ var checkScore = document.getElementById("link-score");
 
 //add event listeners
 startBtn.addEventListener("click", startGame);
-form.addEventListener("submit", submitHighscore);
+form.addEventListener("submit", submitHighScore);
 playAgainBtn.addEventListener("click", playAgain);
 checkScore.addEventListener("click", showScore);
 // display questions in quiz content
@@ -78,6 +83,7 @@ checkScore.addEventListener("click", showScore);
 function startGame() {
   //hide start container
   questionIndex = 0;
+  score = 0;
   timer();
   startContainer.classList.add("hide");
   //show question container
@@ -120,12 +126,24 @@ function buttonClick(e) {
   var correctAnswer = questions[questionIndex].correct;
 
   if (userPickedAnswer == correctAnswer) {
-    score++;
+    score = score + 100;
     console.log(score);
     questionIndex++;
+    if (questionIndex >= 1 && questionIndex <= 5) {
+      document.getElementById("correctIncorrect").innerHTML = "Correct!";
+      setTimeout(function () {
+        document.getElementById("correctIncorrect").innerHTML = "";
+      }, 1000);
+    }
   } else {
     timeLeft = timeLeft - 5;
     questionIndex++;
+    if (questionIndex >= 1 && questionIndex <= 5) {
+      document.getElementById("correctIncorrect").innerHTML = "Incorrect";
+      setTimeout(function () {
+        document.getElementById("correctIncorrect").innerHTML = "";
+      }, 1000);
+    }
   }
   selectQuestion();
 }
@@ -150,7 +168,7 @@ function timer() {
 }
 
 //record initials from form and trigger next event
-function submitHighscore(e) {
+function submitHighScore(e) {
   e.preventDefault();
   //get input value
   var logInitials = document.getElementById("initials").value;
@@ -196,14 +214,11 @@ function showScore() {
   );
 }
 
-// qBtn.addEventListener("click", function (answer, correct) {
-//   qBtn.innerText = answer;
-//   questions.correct.innerText = correct;
-//   if (answer === correct) {
-//     validateAnswer.textContent = "Correct!";
-//     score++;
-//     nextQuestion();
-//   } else {
-//     validateAnswer.textContent = "Incorrect!";
-//     timeLeft = timeLeft - 10;
-//     nextQuestion()\
+//push names and scores into array
+//sort array
+//stringify Array
+//set item in local storage
+// parse array
+// for loop append child
+
+// localStorage.setItem("highScores", JSON.stringify(initials));
