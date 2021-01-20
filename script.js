@@ -52,14 +52,6 @@ var timeLeft = 90;
 
 correct = questions[questionIndex].correct;
 
-storeScores = [];
-function getScores() {
-  if (localStorage.getItem("scores")) {
-    storeScores = JSON.parse(localStorage.getItem("scores"));
-    renderScores();
-  }
-}
-
 // get elements
 
 var startBtn = document.getElementById("start");
@@ -86,8 +78,8 @@ playAgainBtn.addEventListener("click", playAgain);
 checkScore.addEventListener("click", showScore);
 highScoreButton.addEventListener("click", showScore);
 // display questions in quiz content
-
 // Start game function
+
 function startGame() {
   //hide start container
   timeLeft = 90;
@@ -178,25 +170,6 @@ function playAgain(e) {
   startContainer.classList.remove("hide");
 }
 
-// function showScore() {
-//   highScores.classList.remove("hide");
-//   startContainer.classList.add("hide");
-//   scoreSubmit.classList.add("hide");
-//   showQuestions.classList.add("hide");
-
-//   li = document.createElement("li");
-//   li.className = "score-item";
-//   console.log(li);
-
-//   li.appendChild(
-//     document.createTextNode(
-//       localStorage.getItem("initials") +
-//         " - score: " +
-//         localStorage.getItem("score")
-//     )
-//   );
-// }
-
 function Correct() {
   if (questionIndex >= 1 && questionIndex <= 5) {
     document.getElementById("correctIncorrect").innerHTML = "Correct!";
@@ -233,32 +206,32 @@ function Incorrect() {
 storeScores = [];
 function getScores() {
   if (localStorage.getItem("scores")) {
-    scores = JSON.parse(
-      localStorage.getItem(
-        "scores" + " - score: " + localStorage.getItem("score")
-      )
-    );
+    initials = JSON.parse(localStorage.getItem("scores"));
+    score = JSON.parse(localStorage.getItem("scores"))[0].score;
+    // scores = JSON.parse(localStorage.getItem("score")
+
     renderScores();
   }
 }
 
 function renderScores() {
   // clear out the old scores
-  scoreListElement.textContent = "";
+  scores = "";
   // go through the scores
   storeScores.forEach(function (storeScore, i) {
     // create a list item
     var listItem = document.createElement("li");
-    listItem.textContent = storeScore.initials;
+    listItem.textContent = storeScore.initials + "-" + storeScore.score;
     scoreListElement.appendChild(listItem);
+    console.log("storeScore", storeScore);
+    console.log(renderScores);
   });
 }
 
 function handleNewScore(event) {
   // keep the page from reloading
   event.preventDefault();
-  // get the value for the todo from the input
-  // build the new todo
+
   var storeScore = {
     initials: storeInitials.value,
     score: score,
@@ -267,20 +240,27 @@ function handleNewScore(event) {
   storeScores.push(storeScore);
   localStorage.setItem("scores", JSON.stringify(storeScores));
   storeInitials.value = "";
-  renderScores();
+  // renderScores();
   scoreSubmit.classList.add("hide");
   highScores.classList.remove("hide");
   getScores();
 }
 
 function showScore() {
+  getScores();
   highScores.classList.remove("hide");
   startContainer.classList.add("hide");
   scoreSubmit.classList.add("hide");
   showQuestions.classList.add("hide");
-  renderScores();
+  console.log(score);
 }
 
+function init() {
+  console.log("we Init");
+  getScores();
+}
+
+init();
 //   li = document.createElement("li");
 //   li.className = "score-item";
 //   console.log(li);
