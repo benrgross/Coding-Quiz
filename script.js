@@ -48,7 +48,7 @@ var score = 0;
 
 var timeLeft = 90;
 
-var timeInterval = setInterval(timer, 500);
+// var timeInterval = setInterval(timer, 500);
 
 correct = questions[questionIndex].correct;
 
@@ -77,6 +77,7 @@ checkScore.addEventListener("click", showScore);
 // Start game function
 function startGame() {
   //hide start container
+  timeLeft = 90;
   questionIndex = 0;
   timer();
   startContainer.classList.add("hide");
@@ -109,7 +110,6 @@ function displayQuestions(questionIndex) {
   } else {
     showQuestions.classList.add("hide");
     scoreSubmit.classList.remove("hide");
-    clearInterval(timeInterval);
   }
 }
 
@@ -120,12 +120,14 @@ function buttonClick(e) {
   var correctAnswer = questions[questionIndex].correct;
 
   if (userPickedAnswer == correctAnswer) {
-    score++;
+    score = score + 100;
     console.log(score);
     questionIndex++;
     Correct();
   } else {
-    timeLeft = timeLeft - 5;
+    if (userPickedAnswer != correctAnswer) {
+      timeLeft = timeLeft - 10;
+    }
     questionIndex++;
     Incorrect();
   }
@@ -140,15 +142,22 @@ function resetState() {
 }
 
 //set timer function
+
 function timer() {
-  timerEl.textContent = timeLeft;
-  timeLeft--;
-  //need if statement if(answer false time - 10)
-  if (timeLeft === 0) {
-    clearInterval(timeInterval);
-    showQuestions.classList.add("hide");
-    scoreSubmit.classList.remove("hide");
-  }
+  var timeInterval = setInterval(function () {
+    if (timeLeft <= 90) {
+      timeLeft--;
+      timerEl.textContent = timeLeft;
+    }
+    if (questionIndex >= 4) {
+      clearInterval(timeInterval);
+    }
+    if (timeLeft === 0) {
+      clearInterval(timeInterval);
+      showQuestions.classList.add("hide");
+      scoreSubmit.classList.remove("hide");
+    }
+  }, 500);
 }
 
 //record initials from form and trigger next event
@@ -215,3 +224,5 @@ function Incorrect() {
     }, 1000);
   }
 }
+
+console.log(questionIndex);
