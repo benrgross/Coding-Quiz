@@ -123,9 +123,11 @@ function buttonClick(e) {
     score++;
     console.log(score);
     questionIndex++;
+    Correct();
   } else {
     timeLeft = timeLeft - 5;
     questionIndex++;
+    Incorrect();
   }
   selectQuestion();
 }
@@ -194,4 +196,22 @@ function showScore() {
         localStorage.getItem("score")
     )
   );
+}
+
+function Correct() {
+  if (questionIndex >= 1 && questionIndex <= 5) {
+    document.getElementById("correctIncorrect").innerHTML = "Incorrect";
+    setTimeout(function () {
+      document.getElementById("correctIncorrect").innerHTML = "";
+    }, 1000);
+  }
+}
+
+function Incorrect() {
+  if (questionIndex >= 1 && questionIndex <= 5) {
+    document.getElementById("correctIncorrect").innerHTML = "Correct!";
+    setTimeout(function () {
+      document.getElementById("correctIncorrect").innerHTML = "";
+    }, 1000);
+  }
 }
