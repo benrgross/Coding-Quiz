@@ -52,7 +52,16 @@ var timeLeft = 90;
 
 correct = questions[questionIndex].correct;
 
+storeScores = [];
+function getScores() {
+  if (localStorage.getItem("scores")) {
+    storeScores = JSON.parse(localStorage.getItem("scores"));
+    renderScores();
+  }
+}
+
 // get elements
+
 var startBtn = document.getElementById("start");
 var startContainer = document.getElementById("start-container");
 var showQuestions = document.getElementById("quiz-box");
@@ -66,12 +75,16 @@ var scoreSubmit = document.getElementById("score-card");
 var highScores = document.getElementById("highscore");
 var playAgainBtn = document.getElementById("play-again");
 var checkScore = document.getElementById("link-score");
+var storeInitials = document.getElementById("initials");
+var scoreListElement = document.getElementById("score-list");
+var highScoreButton = document.getElementById("scoreBtn");
 
 //add event listeners
 startBtn.addEventListener("click", startGame);
-form.addEventListener("submit", submitHighscore);
+form.addEventListener("submit", handleNewScore);
 playAgainBtn.addEventListener("click", playAgain);
 checkScore.addEventListener("click", showScore);
+highScoreButton.addEventListener("click", showScore);
 // display questions in quiz content
 
 // Start game function
@@ -160,33 +173,104 @@ function timer() {
   }, 500);
 }
 
-//record initials from form and trigger next event
-function submitHighscore(e) {
-  e.preventDefault();
-  //get input value
-  var logInitials = document.getElementById("initials").value;
-  localStorage.setItem("initials", logInitials);
-  localStorage.setItem("score", score);
-  // create new li element
-  var li = document.createElement("li");
-  li.className = "score-item";
-  console.log(li);
-  // add text node with input value
-  li.appendChild(
-    document.createTextNode(
-      localStorage.getItem("initials") +
-        " - score: " +
-        localStorage.getItem("score")
-    )
-  );
-  highScores.appendChild(li);
-  scoreSubmit.classList.add("hide");
-  highScores.classList.remove("hide");
-}
-
 function playAgain(e) {
   highScores.classList.add("hide");
   startContainer.classList.remove("hide");
+}
+
+// function showScore() {
+//   highScores.classList.remove("hide");
+//   startContainer.classList.add("hide");
+//   scoreSubmit.classList.add("hide");
+//   showQuestions.classList.add("hide");
+
+//   li = document.createElement("li");
+//   li.className = "score-item";
+//   console.log(li);
+
+//   li.appendChild(
+//     document.createTextNode(
+//       localStorage.getItem("initials") +
+//         " - score: " +
+//         localStorage.getItem("score")
+//     )
+//   );
+// }
+
+function Correct() {
+  if (questionIndex >= 1 && questionIndex <= 5) {
+    document.getElementById("correctIncorrect").innerHTML = "Correct!";
+    setTimeout(function () {
+      document.getElementById("correctIncorrect").innerHTML = "";
+    }, 1500);
+  }
+  if (questionIndex === 4) {
+    console.log(questionIndex);
+    document.getElementById("correct-incorrect").innerHTML = "Correct!";
+    setTimeout(function () {
+      document.getElementById("correct-incorrect").innerHTML = "";
+    }, 1500);
+  }
+}
+
+function Incorrect() {
+  if (questionIndex >= 1 && questionIndex <= 5) {
+    console.log(questionIndex);
+    document.getElementById("correctIncorrect").innerHTML = "Incorrect!";
+    setTimeout(function () {
+      document.getElementById("correctIncorrect").innerHTML = "";
+    }, 1500);
+    if (questionIndex === 4) {
+      console.log(questionIndex);
+      document.getElementById("correct-incorrect").innerHTML = "Incorrect!";
+      setTimeout(function () {
+        document.getElementById("correct-incorrect").innerHTML = "";
+      }, 1500);
+    }
+  }
+}
+
+storeScores = [];
+function getScores() {
+  if (localStorage.getItem("scores")) {
+    scores = JSON.parse(
+      localStorage.getItem(
+        "scores" + " - score: " + localStorage.getItem("score")
+      )
+    );
+    renderScores();
+  }
+}
+
+function renderScores() {
+  // clear out the old scores
+  scoreListElement.textContent = "";
+  // go through the scores
+  storeScores.forEach(function (storeScore, i) {
+    // create a list item
+    var listItem = document.createElement("li");
+    listItem.textContent = storeScore.initials;
+    scoreListElement.appendChild(listItem);
+  });
+}
+
+function handleNewScore(event) {
+  // keep the page from reloading
+  event.preventDefault();
+  // get the value for the todo from the input
+  // build the new todo
+  var storeScore = {
+    initials: storeInitials.value,
+    score: score,
+  };
+  // save the value
+  storeScores.push(storeScore);
+  localStorage.setItem("scores", JSON.stringify(storeScores));
+  storeInitials.value = "";
+  renderScores();
+  scoreSubmit.classList.add("hide");
+  highScores.classList.remove("hide");
+  getScores();
 }
 
 function showScore() {
@@ -194,35 +278,42 @@ function showScore() {
   startContainer.classList.add("hide");
   scoreSubmit.classList.add("hide");
   showQuestions.classList.add("hide");
-  clearInterval(timeInterval);
-  li = document.createElement("li");
-  li.className = "score-item";
-  console.log(li);
-  li.appendChild(
-    document.createTextNode(
-      localStorage.getItem("initials") +
-        " - score: " +
-        localStorage.getItem("score")
-    )
-  );
+  renderScores();
 }
 
-function Correct() {
-  if (questionIndex >= 1 && questionIndex <= 5) {
-    document.getElementById("correctIncorrect").innerHTML = "Incorrect";
-    setTimeout(function () {
-      document.getElementById("correctIncorrect").innerHTML = "";
-    }, 1000);
-  }
-}
+//   li = document.createElement("li");
+//   li.className = "score-item";
+//   console.log(li);
 
-function Incorrect() {
-  if (questionIndex >= 1 && questionIndex <= 5) {
-    document.getElementById("correctIncorrect").innerHTML = "Correct!";
-    setTimeout(function () {
-      document.getElementById("correctIncorrect").innerHTML = "";
-    }, 1000);
-  }
-}
+//   li.appendChild(
+//     document.createTextNode(
+//       localStorage.getItem("initials") +
+//         " - score: " +
+//         localStorage.getItem("score")
+//     )
+//   );
+// }
 
-console.log(questionIndex);
+//record initials from form and trigger next event
+// function submitHighscore(e) {
+//   e.preventDefault();
+//   //get input value
+//   var logInitials = document.getElementById("initials").value;
+//   localStorage.setItem("initials", logInitials);
+//   localStorage.setItem("score", score);
+//   // create new li element
+//   var li = document.createElement("li");
+//   li.className = "score-item";
+//   console.log(li);
+//   // add text node with input value
+//   li.appendChild(
+//     document.createTextNode(
+//       localStorage.getItem("initials") +
+//         " - score: " +
+//         localStorage.getItem("score")
+//   )
+// );
+// highScores.appendChild(li);
+//   scoreSubmit.classList.add("hide");
+//   highScores.classList.remove("hide");
+// }
