@@ -39,8 +39,6 @@ var questions = [
   },
 ];
 
-var scoreStore = [];
-
 console.log(questions[0].correct);
 var pickQuestion;
 
@@ -48,15 +46,11 @@ var questionIndex = 0;
 
 var score = 0;
 
+var timeLeft = 90;
+
 var timeInterval = setInterval(timer, 500);
 
 correct = questions[questionIndex].correct;
-
-var correct = "Correct!";
-
-var incorrect = "Incorrect!";
-
-timeLeft = 90;
 
 // get elements
 var startBtn = document.getElementById("start");
@@ -75,7 +69,7 @@ var checkScore = document.getElementById("link-score");
 
 //add event listeners
 startBtn.addEventListener("click", startGame);
-form.addEventListener("submit", submitHighScore);
+form.addEventListener("submit", submitHighscore);
 playAgainBtn.addEventListener("click", playAgain);
 checkScore.addEventListener("click", showScore);
 // display questions in quiz content
@@ -84,9 +78,8 @@ checkScore.addEventListener("click", showScore);
 function startGame() {
   //hide start container
   questionIndex = 0;
-  score = 0;
-  startContainer.classList.add("hide");
   timer();
+  startContainer.classList.add("hide");
   //show question container
   showQuestions.classList.remove("hide");
   selectQuestion();
@@ -127,25 +120,12 @@ function buttonClick(e) {
   var correctAnswer = questions[questionIndex].correct;
 
   if (userPickedAnswer == correctAnswer) {
-    score = score + 100;
+    score++;
     console.log(score);
     questionIndex++;
-
-    if (questionIndex >= 1) {
-      document.getElementById("correctIncorrect").innerHTML = "Correct!";
-      setTimeout(function () {
-        document.getElementById("correctIncorrect").innerHTML = "";
-      }, 1000);
-    }
   } else {
     timeLeft = timeLeft - 5;
     questionIndex++;
-    if (questionIndex >= 1) {
-      document.getElementById("correctIncorrect").innerHTML = "Incorrect";
-      setTimeout(function () {
-        document.getElementById("correctIncorrect").innerHTML = "";
-      }, 1000);
-    }
   }
   selectQuestion();
 }
@@ -170,7 +150,7 @@ function timer() {
 }
 
 //record initials from form and trigger next event
-function submitHighScore(e) {
+function submitHighscore(e) {
   e.preventDefault();
   //get input value
   var logInitials = document.getElementById("initials").value;
@@ -215,12 +195,3 @@ function showScore() {
     )
   );
 }
-
-//push names and scores into array
-//sort array
-//stringify Array
-//set item in local storage
-// parse array
-// for loop append child
-
-// localStorage.setItem("highScores", JSON.stringify(initials));
