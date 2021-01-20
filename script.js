@@ -40,14 +40,13 @@ var questions = [
 ];
 
 var scoreStore = [];
+
 console.log(questions[0].correct);
 var pickQuestion;
 
 var questionIndex = 0;
 
 var score = 0;
-
-var timeLeft = 90;
 
 var timeInterval = setInterval(timer, 500);
 
@@ -56,6 +55,8 @@ correct = questions[questionIndex].correct;
 var correct = "Correct!";
 
 var incorrect = "Incorrect!";
+
+timeLeft = 90;
 
 // get elements
 var startBtn = document.getElementById("start");
@@ -84,8 +85,8 @@ function startGame() {
   //hide start container
   questionIndex = 0;
   score = 0;
-  timer();
   startContainer.classList.add("hide");
+  timer();
   //show question container
   showQuestions.classList.remove("hide");
   selectQuestion();
@@ -129,7 +130,8 @@ function buttonClick(e) {
     score = score + 100;
     console.log(score);
     questionIndex++;
-    if (questionIndex >= 1 && questionIndex <= 5) {
+
+    if (questionIndex >= 1) {
       document.getElementById("correctIncorrect").innerHTML = "Correct!";
       setTimeout(function () {
         document.getElementById("correctIncorrect").innerHTML = "";
@@ -138,7 +140,7 @@ function buttonClick(e) {
   } else {
     timeLeft = timeLeft - 5;
     questionIndex++;
-    if (questionIndex >= 1 && questionIndex <= 5) {
+    if (questionIndex >= 1) {
       document.getElementById("correctIncorrect").innerHTML = "Incorrect";
       setTimeout(function () {
         document.getElementById("correctIncorrect").innerHTML = "";
