@@ -1,3 +1,4 @@
+// questions answers and correct answer stored in objects
 var questions = [
   {
     question:
@@ -39,6 +40,8 @@ var questions = [
   },
 ];
 
+// my variables
+
 var pickQuestion;
 
 var questionIndex = 0;
@@ -46,8 +49,6 @@ var questionIndex = 0;
 var score = 0;
 
 var timeLeft = 90;
-
-// var timeInterval = setInterval(timer, 500);
 
 correct = questions[questionIndex].correct;
 
@@ -69,6 +70,7 @@ var checkScore = document.getElementById("link-score");
 var storeInitials = document.getElementById("initials");
 var scoreListElement = document.getElementById("score-list");
 var highScoreButton = document.getElementById("scoreBtn");
+var clearScoresEl = document.getElementById("clear-scores");
 
 //add event listeners
 startBtn.addEventListener("click", startGame);
@@ -76,9 +78,9 @@ form.addEventListener("submit", handleNewScore);
 playAgainBtn.addEventListener("click", playAgain);
 checkScore.addEventListener("click", showScore);
 highScoreButton.addEventListener("click", showScore);
-// display questions in quiz content
-// Start game function
+clearScoresEl.addEventListener("click", clearScores);
 
+// Start game function
 function startGame() {
   //hide start container
   timeLeft = 75;
@@ -95,9 +97,6 @@ function startGame() {
 function selectQuestion() {
   resetState();
   displayQuestions(questionIndex);
-
-  // make loop for selecting questions from array ?
-  // displayQuestions();
 }
 
 //function to show questions and answers as buttons in page
@@ -115,6 +114,8 @@ function displayQuestions(questionIndex) {
   } else {
     showQuestions.classList.add("hide");
     scoreSubmit.classList.remove("hide");
+    document.getElementById("your-score").textContent =
+      "Your Score is " + score + "pts";
   }
 }
 
@@ -163,11 +164,13 @@ function timer() {
   }, 500);
 }
 
+// play again function
 function playAgain(e) {
   highScores.classList.add("hide");
   startContainer.classList.remove("hide");
 }
 
+// displays correct on page when correct answer chosen and disappears after 1500ms
 function Correct() {
   if (questionIndex >= 1 && questionIndex <= 5) {
     document.getElementById("correctIncorrect").innerHTML = "Correct!";
@@ -184,6 +187,7 @@ function Correct() {
   }
 }
 
+// displays incorrect on page when incorrect answer chosen and disappears after 1500ms
 function Incorrect() {
   if (questionIndex >= 1 && questionIndex <= 5) {
     console.log(questionIndex);
@@ -201,7 +205,10 @@ function Incorrect() {
   }
 }
 
+// empty array for storing scores
 storeScores = [];
+
+// function to retrieve scores from local storage
 function getScore() {
   if (localStorage.getItem("scores")) {
     for (i = 0; i < storeScores.length; i++) {
@@ -215,6 +222,7 @@ function getScore() {
   }
 }
 
+// function to render the scores from the local storage onto high score list
 function renderScores() {
   // clear out the old scores
   scoreListElement.textContent = "";
@@ -222,11 +230,14 @@ function renderScores() {
   storeScores.forEach(function (storeScore, i) {
     // create a list item
     var listItem = document.createElement("li");
-    listItem.textContent = storeScore.initials + "-" + storeScore.score;
+    listItem.textContent =
+      storeScore.initials + "-----" + storeScore.score + "pts";
+    listItem.classList.add("score-item");
     scoreListElement.appendChild(listItem);
   });
 }
 
+// function that stores the score along with the submitted initials in an object
 function handleNewScore(event) {
   // keep the page from reloading
   event.preventDefault();
@@ -235,17 +246,15 @@ function handleNewScore(event) {
     initials: storeInitials.value,
     score: score,
   };
-  // save the value
   storeScores.push(storeScore);
   localStorage.setItem("scores", JSON.stringify(storeScores));
   storeInitials.value = "";
-  // renderScores();
   scoreSubmit.classList.add("hide");
   highScores.classList.remove("hide");
-  // renderScores();
   getScore();
 }
 
+// function that switches to high score card and displays high score list when high score button pressed
 function showScore() {
   highScores.classList.remove("hide");
   startContainer.classList.add("hide");
@@ -255,48 +264,16 @@ function showScore() {
   renderScores();
 }
 
+// function that puts stored initials and scores in empty storeScore array when page is loaded
 function init() {
   if (localStorage.getItem("scores")) {
     storeScores = JSON.parse(localStorage.getItem("scores"));
     console.log(storeScores);
   }
 }
-
 init();
 
-//   li = document.createElement("li");
-//   li.className = "score-item";
-//   console.log(li);
-
-//   li.appendChild(
-//     document.createTextNode(
-//       localStorage.getItem("initials") +
-//         " - score: " +
-//         localStorage.getItem("score")
-//     )
-//   );
-// }
-
-//record initials from form and trigger next event
-// function submitHighscore(e) {
-//   e.preventDefault();
-//   //get input value
-//   var logInitials = document.getElementById("initials").value;
-//   localStorage.setItem("initials", logInitials);
-//   localStorage.setItem("score", score);
-//   // create new li element
-//   var li = document.createElement("li");
-//   li.className = "score-item";
-//   console.log(li);
-//   // add text node with input value
-//   li.appendChild(
-//     document.createTextNode(
-//       localStorage.getItem("initials") +
-//         " - score: " +
-//         localStorage.getItem("score")
-//   )
-// );
-// highScores.appendChild(li);
-//   scoreSubmit.classList.add("hide");
-//   highScores.classList.remove("hide");
-// }
+function clearScores() {
+  localStorage.removeItem("scores");
+  location.reload();
+}

@@ -138,15 +138,15 @@ p {
   margin-top: 100px;
   color: rgb(105, 105, 233);
   font-size: 20px;
-  margin-left: 75px;
+  margin-left: 100px;
 }
 
 #play-again {
   clear: both;
   position: absolute;
-  top: 275px;
+  top: 250px;
   left: 160px;
-  padding: 20px;
+  padding: 10px;
 }
 
 #score-list {
@@ -160,12 +160,16 @@ p {
   position: relative;
   top: -30px;
 }
-
+#highscore {
+  overflow: auto;
+}
 .score-item {
-  float: left;
-  margin-left: 20px;
-  position: absolute;
-  top: -45px;
+  margin-left: 0px;
+  position: relative;
+  top: 0px;
+  color: rgb(103, 103, 221);
+  font-size: 20px;
+  list-style-type: none;
 }
 
 #correctIncorrect {
@@ -181,4 +185,23 @@ p {
   font-size: 24px;
 }
 
+#clear-scores {
+  clear: both;
+  position: absolute;
+  top: 300px;
+  left: 160px;
+  padding: 10px;
+}
+
+#display-time {
+  color: red;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+#your-score {
+  color: red;
+  margin-left: 150px;
+}
 /*box shaddow; 0 4px 8px 0 rgba(0,0,0,0.2); */
