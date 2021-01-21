@@ -66,19 +66,7 @@ h1 {
   margin: none;
 }
 
-.score-card {
-}
-
-#start-box {
-}
-
-/* grid for start high score button  */
-/* .btn-grid {
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  justify-content: center;
-} */
-
+/* genneral button class  */
 .btn {
   width: 250px;
   float: left;
@@ -97,16 +85,12 @@ h1 {
   font-size: 21px;
 }
 
+/* hover over button effect */
 .btn:hover {
   background-color: rgb(243, 214, 160);
 }
 
-p {
-}
-
-.choice-container {
-}
-
+/* genneral button class for annswe buttons  */
 .qBtn {
   background-color: rgb(200, 219, 248);
   display: flex;
@@ -121,19 +105,17 @@ p {
   margin-right: 20px;
 }
 
+/* qbtn hover effect  */
 .qBtn:hover {
   background-color: rgb(243, 214, 160);
 }
 
-.choice-letter {
-  margin-right: 15px;
-  margin-left: 5px;
-}
-
+/* hide class to trigger cards on and off the page  */
 .hide {
   display: none;
 }
 
+/* form style  */
 #score-form {
   margin-top: 100px;
   color: rgb(105, 105, 233);
@@ -141,6 +123,7 @@ p {
   margin-left: 100px;
 }
 
+/* play again button  */
 #play-again {
   clear: both;
   position: absolute;
@@ -149,20 +132,26 @@ p {
   padding: 10px;
 }
 
+/* container for list items  */
 #score-list {
   position: relative;
   top: 10px;
 }
 
+/* container to hold scoreboards  */
 .score-box {
   display: flexbox;
   justify-self: center;
   position: relative;
   top: -30px;
 }
+
+/* high score container manage overflow  */
 #highscore {
   overflow: auto;
 }
+
+/* class for appended list items with initials and scores */
 .score-item {
   margin-left: 0px;
   position: relative;
@@ -172,12 +161,14 @@ p {
   list-style-type: none;
 }
 
+/* correct incorrect alerts  */
 #correctIncorrect {
   margin-left: 25px;
   color: red;
   font-size: 24px;
 }
 
+/* allert for final page  */
 #correct-incorrect {
   margin-left: 25px;
   color: red;
@@ -185,6 +176,7 @@ p {
   font-size: 24px;
 }
 
+/* clear scores btn  */
 #clear-scores {
   clear: both;
   position: absolute;
@@ -193,6 +185,7 @@ p {
   padding: 10px;
 }
 
+/* timer  */
 #display-time {
   color: red;
   font-size: 40px;
@@ -200,8 +193,8 @@ p {
   margin-top: 30px;
 }
 
+/* your score display  */
 #your-score {
   color: red;
   margin-left: 150px;
 }
-/*box shaddow; 0 4px 8px 0 rgba(0,0,0,0.2); */
