@@ -5,3 +5,5 @@ This Coding Quiz allows to user to start a timed quiz by the simple click of a b
 This webpage uses only vanilla JavaScript to manipulate the web page. Object selectors, event listeners, object methods, onclick and submit events were implemented to access, build, display and hide elements on the page. Local storage was used to store objects and recall them for user scored to displayed on the page without disappearing after a refresh.
 
 ![](images/quiz-fun-ben.gif)
+
+link to web page: https://benrgross.github.io/Coding-Quiz/
