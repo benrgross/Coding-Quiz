@@ -1,0 +1,200 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+body {
+  box-sizing: border-box;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+.container {
+  height: 100px;
+}
+
+/* css for timer  */
+#timer {
+  position: fixed;
+  width: 10%;
+  float: right;
+  padding: 0px;
+  top: 10px;
+  left: 90%;
+}
+
+/* link to high scores */
+#scorecard-link {
+  clear: both;
+  width: 25%;
+  float: left;
+  padding: 2px;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+}
+
+/* h1 for all cards  */
+h1 {
+  padding: 5px;
+  font-size: 30px;
+  margin-left: 5px;
+  font-weight: 500;
+  color: rgb(105, 105, 233);
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-align: center;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+/* genneral card style  */
+.card {
+  clear: both;
+  display: auto;
+  border: 2px solid rgb(152, 187, 231);
+  box-shadow: 0px 0px 2px 4px rgba(156, 194, 245, 0.986);
+  width: 650px;
+  max-width: 80%;
+  height: 375px;
+  position: relative;
+  top: 100px;
+  left: 80px;
+  border-radius: 5px;
+  margin: none;
+}
+
+/* genneral button class  */
+.btn {
+  width: 250px;
+  float: left;
+  max-width: 60%;
+  margin: auto;
+  display: block;
+  justify-self: center;
+  background-color: rgb(200, 219, 248);
+  border: 2px solid rgb(103, 103, 221);
+  padding: 20px;
+  text-align: center;
+  margin-top: 40px;
+  text-decoration: none;
+  border-radius: 20px 20px;
+  margin-left: 125px;
+  font-size: 21px;
+}
+
+/* hover over button effect */
+.btn:hover {
+  background-color: rgb(243, 214, 160);
+}
+
+/* genneral button class for annswe buttons  */
+.qBtn {
+  background-color: rgb(200, 219, 248);
+  display: flex;
+  color: rgb(7, 63, 112);
+  border: 1px solid rgb(103, 103, 221);
+  border-radius: 5px 5px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  margin-left: 20px;
+  padding: 5px;
+  border-radius: 10px 10px;
+  margin-right: 20px;
+}
+
+/* qbtn hover effect  */
+.qBtn:hover {
+  background-color: rgb(243, 214, 160);
+}
+
+/* hide class to trigger cards on and off the page  */
+.hide {
+  display: none;
+}
+
+/* form style  */
+#score-form {
+  margin-top: 100px;
+  color: rgb(105, 105, 233);
+  font-size: 20px;
+  margin-left: 100px;
+}
+
+/* play again button  */
+#play-again {
+  clear: both;
+  position: absolute;
+  top: 250px;
+  left: 160px;
+  padding: 10px;
+}
+
+/* container for list items  */
+#score-list {
+  position: relative;
+  top: 10px;
+}
+
+/* container to hold scoreboards  */
+.score-box {
+  display: flexbox;
+  justify-self: center;
+  position: relative;
+  top: -30px;
+}
+
+/* high score container manage overflow  */
+#highscore {
+  overflow: auto;
+}
+
+/* class for appended list items with initials and scores */
+.score-item {
+  margin-left: 0px;
+  position: relative;
+  top: 0px;
+  color: rgb(103, 103, 221);
+  font-size: 20px;
+  list-style-type: none;
+}
+
+/* correct incorrect alerts  */
+#correctIncorrect {
+  margin-left: 25px;
+  color: red;
+  font-size: 24px;
+}
+
+/* allert for final page  */
+#correct-incorrect {
+  margin-left: 25px;
+  color: red;
+  margin-top: 65px;
+  font-size: 24px;
+}
+
+/* clear scores btn  */
+#clear-scores {
+  clear: both;
+  position: absolute;
+  top: 300px;
+  left: 160px;
+  padding: 10px;
+}
+
+/* timer  */
+#display-time {
+  color: red;
+  font-size: 40px;
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+/* your score display  */
+#your-score {
+  color: red;
+  margin-left: 150px;
+}
