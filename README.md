@@ -7,3 +7,5 @@ This webpage uses only vanilla JavaScript to manipulate the web page. Object sel
 ![](images/quiz-fun-ben.gif)
 
 link to web page: https://benrgross.github.io/Coding-Quiz/
+
+email: benrgross@gmail.com
